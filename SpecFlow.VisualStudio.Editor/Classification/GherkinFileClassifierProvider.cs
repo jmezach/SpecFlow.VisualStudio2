@@ -4,11 +4,14 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.Text;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
 using SpecFlow.VisualStudio.Editor.Parser;
+using Microsoft.VisualStudio.LanguageServices;
+using SpecFlow.VisualStudio.Editor.StepMapping;
 
 namespace SpecFlow.VisualStudio.Editor.Classification
 {
@@ -21,6 +24,9 @@ namespace SpecFlow.VisualStudio.Editor.Classification
 
         [Import]
         internal IClassificationTypeRegistryService ClassificationTypeRegistry = null;
+
+        [Import]
+        internal StepMap StepMap = null;
 
         public IClassifier GetClassifier(ITextBuffer buffer)
         {
